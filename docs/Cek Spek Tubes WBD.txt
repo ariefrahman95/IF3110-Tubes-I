@@ -1,0 +1,9 @@
+Cek Spek Tubes WBD
+
+HEADER
+1. Logo Situs
+	23/10 Azal | Udah bikin versi ngasal, dalam bentuk .png :P Udah dikasih link ke home (hello.php) 
+2. Kategori
+	23/10 Azal | Udah bikin versi ngasal, masih dalam bentuk tulisan aja, dikasih link menuju page masing2, belum pake AJAX
+3. Login
+
