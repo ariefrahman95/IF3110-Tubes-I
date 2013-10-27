@@ -1,0 +1,160 @@
+/* style.css */
+
+    /* Makeshift CSS Reset */  
+    {  
+        margin: 0;  
+        padding: 0;  
+    }  
+      
+    body {  
+        margin: 0 auto;  
+        width: 940px;  
+        font: 14px/22px Helvetica, Arial, sans-serif;
+        background: #f0f0f0;  
+        /*background-image:url('shopping_cart.png');*/
+    }  
+
+    /* Tell the browser to render HTML 5 elements as block */  
+    header, footer, aside, nav, article {  
+        display: block;  
+    }
+      
+    h2 {  
+        font-size: 28px;  
+        line-height: 44px;  
+        padding: 22px 0;  
+    }  
+      
+    h3 {  
+        font-size: 18px;  
+        line-height: 22px;  
+        padding: 11px 0;  
+    }  
+      
+    p {  
+        padding-bottom: 22px;  
+    }  
+
+    nav {  
+        position: absolute;  
+        left: 0;  
+        width: 100%;  
+        background: url("nav_background.jpg");  
+    }  
+
+        nav ul {  
+        margin: 0 auto;  
+        width: 940px;  
+        list-style: none;  
+    }  
+
+        nav ul li {  
+        float: left;  
+    }  
+      
+        nav ul li a {  
+            display: block;  
+            margin-right: 20px;  
+            width: 140px;  
+            font-size: 14px;  
+            line-height: 44px;  
+            text-align: center;  
+            text-decoration: none;  
+            color: #777;  
+        }  
+      
+            nav ul li a:hover {  
+                color: #fff;  
+            }  
+      
+            nav ul li.selected a {  
+                color: #fff;  
+            }  
+
+    #intro {  
+        margin-top: 66px;  
+        padding: 44px;  
+        background: #467612 url("intro_background.jpg") repeat-x;  
+        background-size: 100%;  
+        border-radius: 22px;
+        background: #467612 url("intro_background.jpg") top left (287px 100%) repeat-x,  
+            url("intro_flower.jpg") top rightright (653px 100%) no-repeat;  
+        /* Background-size not implemented yet */  
+    -webkit-background-size: 100%;  
+    -o-background-size: 100%;  
+    -khtml-background-size: 100%;  
+  
+    /* Border-radius not implemented yet */  
+    -moz-border-radius: 22px;  
+    -webkit-border-radius: 22px;    
+    }  
+
+        #intro h2, #intro p¬†{  
+        width: 336px;  
+    }  
+      
+    #intro h2 {  
+        padding: 0 0 22px 0;  
+        font-weight: normal  
+        color: #fff;  
+    }  
+      
+    #intro p {  
+        padding: 0;  
+        color: #d9f499;  
+    }  
+
+
+    #content {  
+        display: table;  
+    }  
+      
+        #mainContent {  
+            display: table-cell;  
+            width: 620px;  
+            padding-right: 22px;  
+        }  
+      
+        aside {  
+            display: table-cell;  
+            width: 300px;  
+        }  
+
+    .blogPost div {  
+        column-count: 2;  
+        column-gap: 22px;  
+    }  
+
+        .blogPost img {  
+        margin: 22px 0;  
+        box-shadow: 3px 3px 7px #777;  
+    }  
+
+    #about {  
+        position: absolute;
+        text-align: center;
+        left: 0;
+        width: 100%;  
+        background: url("nav_background.jpg");  
+        color: #777;
+    }  
+
+#stylePrintBold {
+	color: black;
+	font-family: Print Bold;
+	font-size: 26px;
+	text-align: right;
+	/* Hmmmm gimana caranya ngatur spasinya biar ga kegedean -,- */
+}
+
+#stylePrintBold2 {
+	color: pink;
+	font-family: Print Bold;
+	font-size: 26px;
+	text-align: right;
+}
+
+#stylePrintBold2:hover {
+	color: grey;
+}
+

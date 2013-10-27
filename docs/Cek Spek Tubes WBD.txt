@@ -2,8 +2,14 @@ Cek Spek Tubes WBD
 
 HEADER
 1. Logo Situs
-	23/10 Azal | Udah bikin versi ngasal, dalam bentuk .png :P Udah dikasih link ke home (hello.php) 
+	23/10 Azal | Bikin versi ngasal, format .png, berupa link ke home (hello.php) 
 2. Kategori
-	23/10 Azal | Udah bikin versi ngasal, masih dalam bentuk tulisan aja, dikasih link menuju page masing2, belum pake AJAX
-3. Login
-
+	23/10 Azal | Bikin versi ngasal, tulisan hyperlink menuju page yang belum ada, belum pake AJAX
+3. Login + Daftar
+	23/10 Azal | Bikin versi ngasal, tulisan hyperlink menuju page yang belum ada. Belum bisa ganti jadi "Selamat datang, <Nama>!" atau jadi Logout.
+4. Registrasi (AJAX)
+	//LAGI AMA ARIEF
+5. Search
+	23/10 Azal | Masih versi ngasal
+6. Link Shopping Bag
+	23/10 Azal | Masih versi ngasal
