@@ -6,56 +6,81 @@
     </head>
     
     <header>
-            <p>  
-                <a href="#"> <img id="logo" src = "shopping_cart.jpg"/> </a> <!--link shopping cart-->
-                <a href="ruserba.php"> <img src = "ruserba.png"/> </a> <!--logo, link ke home-->
-                <img src = "milo_animated.gif"/>
-				
-				<script>
-					if(typeof(Storage)!=="undefined") {
-						// Isi dengan pengecekan login
-					}
-					else {
-						document.getElementById("result").innerHTML="Sorry, your browser does not support web storage...";
-					}
-				</script>
-				
+        <a href="#"> <img src = "shopping_cart.png"/> </a> <!--link shopping cart-->
+        <a href="index.php"> <img src = "ruserba.png"/> </a> <!--logo, link ke home-->
+        <div align="right">
+            <section id="welcome-user">
                 <?php
-                    if (false) { //dummy dulu, udah login ceritanya
+                    if (false) { //KERJAANNYA ARIEF NIH
                         echo 'Selamat datang,&nbsp;
-                            <a href="myprofile.php">Nama</a>!
-                            Lihat <a href="myshoppingbag.php">shopping bag</a>';
-                    } else {
-                        echo '<a href="login.php">Login</a> &nbsp; Belum terdaftar? &nbsp; 
-                        <a href="daftar.php">Daftar</a>  &nbsp;';
-                    }
+                        <a href="profile.php">Nama</a>!
+                        Lihat <a href="shoppingcart.php">shopping bag</a> &nbsp;
+                        <button onclick="logout()">Logout</button>';
 
+                    } else {
+                        echo '<button onclick="login()">Login</button> &nbsp; Belum punya akun? &nbsp;
+                        <a href="Register.php">Daftar</a>';
+                    }
                 ?>
-            </p>
+            </section>
+
+            <section id="search">
+                Cari barang: 
+                <input type="text" id="searchText"/>
+                <select name="dropdown-category">
+                    <option value="Category">Category</option>
+                    <?php
+                        include('connect-mysql.php');
+                        $sql = "SELECT DISTINCT category FROM product";
+                        $result = mysql_query($sql,$connect);
+                        if (!$result) {
+                            die("Error : " . mysql_error());
+                        }
+                        echo '<ul>';
+                        while($row = mysql_fetch_row($result)) {
+                            foreach($row as $key=>$value) {
+                                echo '<option value=', $value,'>',$value,'</option>';
+                            }
+                        }
+                        echo '</ul>';
+                    ?>
+                </select>
+                <select name="dropdown-price">
+                    <option value="Price">Price</option>
+                    <option value="500">Rp500,- ++</option>
+                    <option value="10000">Rp10.000,- ++</option>
+                    <option value="50000">Rp50.000,- ++</option>
+                    <option value="100000">Rp100.000,- ++</option>
+                </select>
+                <input type="submit" value="Search"/>
+            </section>
+            <br>
+        </div>
     </header>
 
     <body>
         <!-- Navigation -->
         <nav>
-            <?php
-                include 'connect-mysql.php';
-                $sql = "SELECT DISTINCT category FROM product";
-                $result = mysql_query($sql,$connect);
-                if (!$result) {
-                    die("Error : " . mysql_error());
-                }
-                echo '<ul>';
-                $i = 1;
-                while($row = mysql_fetch_row($result)) {
-                    foreach($row as $key=>$value) {
-                        if($i<=5) {
-                            echo '<li> <a href="#">', $value, '</a> </li>';    
+            <ul>
+                <li> <a href="#">All Categories</a>
+                    <?php
+                        include('connect-mysql.php');
+                        $sql = "SELECT DISTINCT category FROM product";
+                        $result = mysql_query($sql,$connect);
+                        if (!$result) {
+                            die("Error : " . mysql_error());
                         }
-                        $i++;
-                    }
-                }
-            echo '</ul>';
-            ?>    
+                        echo '<ul>';
+                        while($row = mysql_fetch_row($result)) {
+                            foreach($row as $key=>$value) {
+                                echo '<li> <a href="#">', $value, '</a> 
+                                </li>';    
+                            }
+                        }
+                        echo '</ul>';
+                    ?>    
+                </li>
+            </ul>
         </nav>
 
         <!-- Introduction -->
@@ -63,3 +88,14 @@
            
         </section>
     </body>
+
+    <script>
+        function login() {
+            var x;
+            var person=prompt("Username: ");
+        }
+        function logout() {
+        }
+    </script>
+
+</html>

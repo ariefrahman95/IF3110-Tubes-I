@@ -1,8 +1,11 @@
 <HTML>
-	<head>
-	</head>
+	<?php
+        // Header
+        include("header.php");
+    ?>
+
 	<body>
-		<h1>Form Registrasi Ruko Serba Ada</h1>
+		<h1>Registrasi Pengguna</h1>
 		<form method="post" action="Mysql-Register.php" name="regform">
 			<pre>Username            : <input type="text" name="username" onkeyup="valPassword();valUsername();valid()"> <span id="user"> </span><br> </pre>
 			<pre>Password            : <input type="password" name="password" onkeyup="valPassword();valUsername();valEmail();valid()"> <span id="pass"></span> <br> </pre>

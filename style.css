@@ -1,161 +1,158 @@
 /* style.css */
 
-    /* Makeshift CSS Reset */  
-    {  
-        margin: 0;  
-        padding: 0;  
-    }  
-      
-    body {  
-        margin: 0 auto;  
-        width: 940px;  
-        font: 14px/22px Helvetica, Arial, sans-serif;
-        background: #f0f0f0;
-    }  
+/* Makeshift CSS Reset */
+{
+    margin: 0;
+    padding: 0;
+}
 
-    /* Tell the browser to render HTML 5 elements as block */  
-    header, footer, aside, nav, article {  
-        display: block;  
-    }
-      
-    h2 {  
-        font-size: 28px;  
-        line-height: 44px;  
-        padding: 22px 0;  
-    }  
-      
-    h3 {  
-        font-size: 18px;  
-        line-height: 22px;  
-        padding: 11px 0;  
-    }  
-      
-    p {  
-        padding-bottom: 22px;  
-    }  
+body {
+    margin: 0 auto;
+    width: 940px;
+    font: 14px/22px Helvetica, Arial, sans-serif;
+    background: #f0f0f0;
+}  
 
-    nav {  
-        position: absolute;  
-        left: 0;  
-        width: 100%;  
-        background: url("nav_background.jpg");  
-    }  
+/* Tell the browser to render HTML 5 elements as block */
+header, footer, aside, nav, article {
+    display: block;
+}
 
-	nav ul {  
-        margin: 0 auto;  
-        width: 940px;  
-        list-style: none;  
-    }  
-	
-	nav ul li {  
-        float: left;  
-    }  
-      
-	nav ul li a {  
-		display: block;  
-		margin-right: 20px;  
-		width: 140px;  
-		font-size: 14px;  
-		line-height: 44px;  
-		text-align: center;  
-		text-decoration: none;  
-		color: #777;  
-	}  
-      
-	nav ul li a:hover {  
-		color: #fff;  
-	}  
-      
-	nav ul li.selected a {  
-		color: #fff;  
-	}  
-			
-	img {
-		height: 30%;
-		width: 30%;
-	}
+h2 {
+    font-size: 28px;
+    line-height: 44px;
+    padding: 22px 0;
+}
 
-    #intro {  
-        margin-top: 66px;  
-        padding: 44px;  
-        background: #467612 url("intro_background.jpg") repeat-x;  
-        background-size: 100%;  
-        border-radius: 22px;
-        background: #467612 url("intro_background.jpg") top left (287px 100%) repeat-x,  
-            url("intro_flower.jpg") top rightright (653px 100%) no-repeat;  
-        /* Background-size not implemented yet */  
-    -webkit-background-size: 100%;  
-    -o-background-size: 100%;  
-    -khtml-background-size: 100%;  
-  
-    /* Border-radius not implemented yet */  
+h3 {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 11px 0;
+}
+
+p {
+    padding-bottom: 22px;
+}  
+
+nav {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: url("nav_background.jpg");
+}  
+
+nav ul {  
+    margin: 0 auto;  
+    width: 940px;  
+    list-style: none;  
+}  
+
+nav ul li {  
+    float: left;  
+    position: relative;
+}  
+      
+nav ul li a {
+    display: block;  
+    margin-right: 20px;  
+    width: 140px;  
+    font-size: 14px;  
+    line-height: 44px;  
+    text-align: center;  
+    text-decoration: none;  
+    color: #777;
+}  
+      
+nav ul li a:hover {  
+    color: #fff;  
+}  
+      
+nav ul li.selected a {  
+    color: #fff;  
+}
+
+nav ul li ul {
+    display: none
+}
+ 
+nav ul li:hover ul {
+     display: block;
+     position: absolute;
+}
+
+nav ul li:hover ul li a {
+     background:#000;
+     color:#777;
+     text-align: center;
+}
+nav ul li:hover ul li a:hover {
+     background:#777;
+     color:#fff;
+}
+
+
+article ul li a {
+    color: #000;
+    text-decoration: none;
+}
+
+#intro {  
+    margin-top: 66px;  
+    padding: 44px;  
+    background: #467612 url("intro_background.jpg") repeat-x;  
+    background-size: 100%;  
+    border-radius: 22px; 
     -moz-border-radius: 22px;  
     -webkit-border-radius: 22px;    
-    }  
+}  
 
-        #intro h2, #intro p¬†{  
-        width: 336px;  
-    }  
+#intro h2, #intro p¬†{  
+    width: 336px;
+}  
       
-    #intro h2 {  
-        padding: 0 0 22px 0;  
-        font-weight: normal  
-        color: #fff;  
-    }  
+#intro h2 {  
+    padding: 0 0 22px 0;  
+    font-weight: normal  
+    color: #fff;  
+}  
       
-    #intro p {  
-        padding: 0;  
-        color: #d9f499;  
-    }  
+#intro p {  
+    padding: 0;  
+    color: #d9f499;  
+}  
 
 
-    #content {  
-        display: table;  
-    }  
+#content {  
+    display: table;  
+}  
+    
+#mainContent {  
+    display: table-cell;  
+    width: 620px;  
+    padding-right: 22px;  
+}  
       
-        #mainContent {  
-            display: table-cell;  
-            width: 620px;  
-            padding-right: 22px;  
-        }  
-      
-        aside {  
-            display: table-cell;  
-            width: 300px;  
-        }  
+aside {  
+    display: table-cell;  
+    width: 300px;  
+}  
 
-    .blogPost div {  
-        column-count: 2;  
-        column-gap: 22px;  
-    }  
+.blogPost div {  
+    column-count: 2;  
+    column-gap: 22px;  
+    text-decoration: none;
+}  
 
-        .blogPost img {  
-        margin: 22px 0;  
-        box-shadow: 3px 3px 7px #777;  
-    }  
+.blogPost img {  
+    margin: 22px 0;  
+    box-shadow: 3px 3px 7px #777;  
+}  
 
-    #about {  
-        position: absolute;
-        text-align: center;
-        left: 0;
-        width: 100%;  
-        background: url("nav_background.jpg");  
-        color: #777;
-    }  
-
-	#stylePrintBold {
-		color: black;
-		font-family: Print Bold;
-		font-size: 26px;
-		text-align: right;
-		/* Hmmmm gimana caranya ngatur spasinya biar ga kegedean?? -,- */
-	}
-	
-	#logo {
-		height: 100px;
-		width: 100px
-	}
-
-table.db-table      { border-right:1px solid #ccc; border-bottom:1px solid #ccc; }
-table.db-table th   { background:#eee; padding:5px; border-left:1px solid #ccc; border-top:1px solid #ccc; }
-table.db-table td   { padding:5px; border-left:1px solid #ccc; border-top:1px solid #ccc; }
+#about {  
+    position: absolute;
+    text-align: center;
+    left: 0;
+    width: 100%;  
+    background: url("nav_background.jpg");  
+    color: #777;
+}
