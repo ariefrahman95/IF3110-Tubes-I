@@ -1,6 +1,6 @@
 <?php
-	include("includes/db.php");
-	include("includes/functions.php");
+	include("connect-mysql.php");
+	include("header.php");
 	
 	if(isset($_REQUEST['command']) || isset($_REQUEST['productId'])) {
 		if($_REQUEST['command']=='add' && $_REQUEST['productid']>0){
@@ -12,8 +12,8 @@
 	}
 	
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Products</title>
@@ -36,16 +36,21 @@
 	<h1 align="center">Products</h1>
 	<table border="0" cellpadding="2px" width="600px">
 		<?php
-			$result=mysql_query("select * from products") or die("select * from products"."<br/><br/>".mysql_error());
-			while($row=mysql_fetch_array($result)){
+			$result = mysql_query("SELECT * FROM product WHERE category = " .$_GET['category']) 
+					or die("SELECT * FROM product "."<br/><br/>".mysql_error());
+			while($row = mysql_fetch_array($result)) {
 		?>
     	<tr>
-        	<td><img src="<?php echo $row['picture']?>" /></td>
-            <td>   	<b><?php echo $row['name']?></b><br />
-            		<?php echo $row['description']?><br />
-                    Price:<big style="color:green">
-                    	$<?php echo $row['price']?></big><br /><br />
-                    <input type="button" value="Add to Cart" onclick="addtocart(<?php echo $row['serial']?>)" />
+        	<td>
+				<img src="<?php echo $row['picture']?>" />
+			</td>
+            <td>   	
+				<b> <?php echo $row['name']?> </b> <br />
+				Price:<big style="color:green"> $<?php echo $row['price']?></big> <br /> <br />
+				<form>
+					<input type
+					<input type="button" value="Add to Cart" onclick="addtocart(<?php echo $row['id'];?>)" />
+				</form>
 			</td>
 		</tr>
         <tr><td colspan="2"><hr size="1" /></td>

@@ -7,11 +7,20 @@
     
     <header>
             <p>  
-                <a href="#"> <img src = "shopping_cart.png"/> </a> <!--link shopping cart-->
+                <a href="#"> <img id="logo" src = "shopping_cart.jpg"/> </a> <!--link shopping cart-->
                 <a href="ruserba.php"> <img src = "ruserba.png"/> </a> <!--logo, link ke home-->
                 <img src = "milo_animated.gif"/>
+				
+				<script>
+					if(typeof(Storage)!=="undefined") {
+						// Isi dengan pengecekan login
+					}
+					else {
+						document.getElementById("result").innerHTML="Sorry, your browser does not support web storage...";
+					}
+				</script>
+				
                 <?php
-                    //LOGIN & SIGN UP
                     if (false) { //dummy dulu, udah login ceritanya
                         echo 'Selamat datang,&nbsp;
                             <a href="myprofile.php">Nama</a>!

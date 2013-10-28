@@ -80,50 +80,6 @@
                     </article> 
                 </section>
             </div>  
-        
-            <!-- Sidebar -->
-            <aside>
-                <!--Login, DUMMY LOGIN--> 
-                <section>
-                    <h3> Login </h3>
-                    <pre> Username <input type="text" id="usernameText"/> </pre>
-                    <pre> Password <input type="text" id="passwordText"/> </pre>
-                        <form action="Register.php"> 
-                            Belum punya akun? 
-                            <input type="submit" value="Daftar"/>
-                        </form>
-                </section>
-
-                <!--Search, DUMMY SEARCH--> 
-                <section>
-                    <h3> Search </h3>
-                    <input type="text" id="searchText"/>
-                    <input type="submit" value="Search"/>
-                </section>
-                
-                <!--Categories-->
-                <section>
-                    <header>
-                        <h3> All Categories </h3>
-                    </header>
-                    <?php
-                        include 'connect-mysql-product.php';
-                        $sql = "SELECT DISTINCT category FROM product";
-                        $result = mysql_query($sql,$connect);
-                        if (!$result) {
-                            die("Error : " . mysql_error());
-                        }
-                        echo '<ul>';
-                            while($row = mysql_fetch_row($result)) {
-                                foreach($row as $key=>$value) {
-                                    echo '<li> <a href="#">', $value, '</a> </li>';
-                                }       
-                            }
-                        echo '</ul>';
-                        ?>
-                </section>
-                </aside>
-            </div>
 
         <!-- Footer -->
         <footer>

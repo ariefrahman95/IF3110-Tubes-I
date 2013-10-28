@@ -41,34 +41,39 @@
         background: url("nav_background.jpg");  
     }  
 
-        nav ul {  
+	nav ul {  
         margin: 0 auto;  
         width: 940px;  
         list-style: none;  
     }  
-
-        nav ul li {  
+	
+	nav ul li {  
         float: left;  
     }  
       
-        nav ul li a {  
-            display: block;  
-            margin-right: 20px;  
-            width: 140px;  
-            font-size: 14px;  
-            line-height: 44px;  
-            text-align: center;  
-            text-decoration: none;  
-            color: #777;  
-        }  
+	nav ul li a {  
+		display: block;  
+		margin-right: 20px;  
+		width: 140px;  
+		font-size: 14px;  
+		line-height: 44px;  
+		text-align: center;  
+		text-decoration: none;  
+		color: #777;  
+	}  
       
-            nav ul li a:hover {  
-                color: #fff;  
-            }  
+	nav ul li a:hover {  
+		color: #fff;  
+	}  
       
-            nav ul li.selected a {  
-                color: #fff;  
-            }  
+	nav ul li.selected a {  
+		color: #fff;  
+	}  
+			
+	img {
+		height: 30%;
+		width: 30%;
+	}
 
     #intro {  
         margin-top: 66px;  
@@ -138,13 +143,18 @@
         color: #777;
     }  
 
-#stylePrintBold {
-	color: black;
-	font-family: Print Bold;
-	font-size: 26px;
-	text-align: right;
-	/* Hmmmm gimana caranya ngatur spasinya biar ga kegedean?? -,- */
-}
+	#stylePrintBold {
+		color: black;
+		font-family: Print Bold;
+		font-size: 26px;
+		text-align: right;
+		/* Hmmmm gimana caranya ngatur spasinya biar ga kegedean?? -,- */
+	}
+	
+	#logo {
+		height: 100px;
+		width: 100px
+	}
 
 table.db-table      { border-right:1px solid #ccc; border-bottom:1px solid #ccc; }
 table.db-table th   { background:#eee; padding:5px; border-left:1px solid #ccc; border-top:1px solid #ccc; }
