@@ -2,7 +2,7 @@
 	$mysql['host'] = "localhost";
 	$mysql['username'] = "root";
 	$mysql['password'] = "";
-	$mysql['dbs'] = "ruserba";
+	$mysql['dbs'] = "dbs";
 
 	$connect = mysql_connect($mysql['host'] , $mysql['username'] , $mysql['password']);
 	if (!$connect) {

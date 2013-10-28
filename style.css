@@ -10,8 +10,7 @@
         margin: 0 auto;  
         width: 940px;  
         font: 14px/22px Helvetica, Arial, sans-serif;
-        background: #f0f0f0;  
-        /*background-image:url('shopping_cart.png');*/
+        background: #f0f0f0;
     }  
 
     /* Tell the browser to render HTML 5 elements as block */  
@@ -144,17 +143,9 @@
 	font-family: Print Bold;
 	font-size: 26px;
 	text-align: right;
-	/* Hmmmm gimana caranya ngatur spasinya biar ga kegedean -,- */
+	/* Hmmmm gimana caranya ngatur spasinya biar ga kegedean?? -,- */
 }
 
-#stylePrintBold2 {
-	color: pink;
-	font-family: Print Bold;
-	font-size: 26px;
-	text-align: right;
-}
-
-#stylePrintBold2:hover {
-	color: grey;
-}
-
+table.db-table      { border-right:1px solid #ccc; border-bottom:1px solid #ccc; }
+table.db-table th   { background:#eee; padding:5px; border-left:1px solid #ccc; border-top:1px solid #ccc; }
+table.db-table td   { padding:5px; border-left:1px solid #ccc; border-top:1px solid #ccc; }

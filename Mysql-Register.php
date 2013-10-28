@@ -22,5 +22,8 @@
 			}
 			echo "1 record added";
 		?>
+
+		Apakah anda ingin memasukkan nomor kartu kredit anda? <br>
+		<a href="Registercard.php">Ya</a> <a href="index.php">Tidak</a>
 	</body>
 </html>
