@@ -1,11 +1,16 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
 <?php
-	include("connect-mysql.php");
-	include("header.php");
+	session_start();
+	include('functions.php');
+
+	if($_REQUEST['command']=='add' && $_REQUEST['productid']>0){
+		$pid=$_REQUEST['productid'];
+		addtocart($pid);
+		header("location:shoppingcart.php");
+		exit();
+	}
+
+	include('header.php');
+	include('connect-mysql.php');
 	
 	$result = mysql_query("SELECT * FROM product WHERE id = " .$_GET['product_id']) 
 			or die("Error searching database.".mysql_error());
@@ -13,6 +18,7 @@ and open the template in the editor.
 	$title = "Product Details : " .$row['name'];
 ?>
 
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -26,13 +32,20 @@ and open the template in the editor.
 		</script>
     </head>
     <body>
+    	<form name="form1">
+			<input type="hidden" name="productid" />
+	    	<input type="hidden" name="command" />
+		</form>
 		<table>
 			<tr>
         	<td>
-				<img src="<?php echo $row['picture']?>" />
+				<?php 
+					echo '<img src="'.$row['picture'].'">';
+				?>
 			</td>
             <td>   	
 				<b> <?php echo $row['name']?> </b> <br />
+				<?php echo '<img scr="',$row['picture'],'"/>'; ?>
             	<?php echo $row['description']?> <br />
 				Price:<big style="color:green"> $<?php echo $row['price']?></big> <br /> <br />
 				<form>

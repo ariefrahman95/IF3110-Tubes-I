@@ -1,3 +1,5 @@
+<?php include("header.php"); ?>
+
 <html>
 	<body>
 		<?php 
@@ -20,10 +22,17 @@
 			if (!$result) {
 				die("Error : " . mysql_error());
 			}
-			echo "1 record added";
+
 		?>
 
-		Apakah anda ingin memasukkan nomor kartu kredit anda? <br>
+		<script>
+			localStorage.username = <?php echo '"'.$_POST["username"].'"'; ?>;
+			document.getElementById("welcome").innerHTML = "Welcome, <a href='profile.php'>"+localStorage.username+"</a>! <button onclick='logout()'>Logout</button>";
+		</script>
+
+		Registrasi berhasil! <br />
+		Selamat datang di Ruserba, <?php echo $_POST['username']; ?>! <br/> 
+		Apakah Anda ingin memasukkan nomor kartu kredit? <br>
 		<a href="Registercard.php">Ya</a> <a href="index.php">Tidak</a>
 	</body>
 </html>

@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!doctype html>
 <html>
     <head>
@@ -5,54 +9,29 @@
         <link type="text/css" rel="stylesheet" href="style.css"/> <!--link ke css-->
     </head>
     
-    <header>
-        <a href="#"> <img src = "shopping_cart.png"/> </a> <!--link shopping cart-->
+    <header onload="javascript:welcomeuser()">
+        <a href="shoppingcart.php"> <img src = "shopping_cart.png"/> </a> <!--link shopping cart-->
         <a href="index.php"> <img src = "ruserba.png"/> </a> <!--logo, link ke home-->
+        <img align="right" width = "200" src = "milo_animation.gif"/>
         <div align="right">
-            <section id="welcome-user">
-                <?php
-                    if (false) { //KERJAANNYA ARIEF NIH
-                        echo 'Selamat datang,&nbsp;
-                        <a href="profile.php">Nama</a>!
-                        Lihat <a href="shoppingcart.php">shopping bag</a> &nbsp;
-                        <button onclick="logout()">Logout</button>';
-
-                    } else {
-                        echo '<button onclick="login()">Login</button> &nbsp; Belum punya akun? &nbsp;
-                        <a href="Register.php">Daftar</a>';
+            <div id="welcome">
+                <script>
+                    if (typeof(Storage) !== "undefined") {
+                        if(!localStorage.username) {
+                                document.getElementById("welcome").innerHTML = "<button onclick='login()'>Login</button> &nbsp; Belum punya akun? &nbsp; <a href='Register.php'>Daftar</a>";
+                        } else {
+                                document.getElementById("welcome").innerHTML = "Welcome, <a href='profile.php'>"+localStorage.username+"</a>! <button onclick='logout()'>Logout</button>";
+                        }
                     }
-                ?>
-            </section>
+                </script>
+            </div>
 
             <section id="search">
-                Cari barang: 
-                <input type="text" id="searchText"/>
-                <select name="dropdown-category">
-                    <option value="Category">Category</option>
-                    <?php
-                        include('connect-mysql.php');
-                        $sql = "SELECT DISTINCT category FROM product";
-                        $result = mysql_query($sql,$connect);
-                        if (!$result) {
-                            die("Error : " . mysql_error());
-                        }
-                        echo '<ul>';
-                        while($row = mysql_fetch_row($result)) {
-                            foreach($row as $key=>$value) {
-                                echo '<option value=', $value,'>',$value,'</option>';
-                            }
-                        }
-                        echo '</ul>';
-                    ?>
-                </select>
-                <select name="dropdown-price">
-                    <option value="Price">Price</option>
-                    <option value="500">Rp500,- ++</option>
-                    <option value="10000">Rp10.000,- ++</option>
-                    <option value="50000">Rp50.000,- ++</option>
-                    <option value="100000">Rp100.000,- ++</option>
-                </select>
-                <input type="submit" value="Search"/>
+                <form action="search.php" method="get">
+                    Cari barang: 
+                    <input type="text" name="search"/>
+                    <input type="submit" value="Search"/>
+                </form>
             </section>
             <br>
         </div>
@@ -73,7 +52,7 @@
                         echo '<ul>';
                         while($row = mysql_fetch_row($result)) {
                             foreach($row as $key=>$value) {
-                                echo '<li> <a href="#">', $value, '</a> 
+                                echo '<li> <a href=products.php?category="',$value,'">', $value, '</a> 
                                 </li>';    
                             }
                         }
@@ -89,12 +68,41 @@
         </section>
     </body>
 
-    <script>
+    <script language="javascript">
         function login() {
             var x;
-            var person=prompt("Username: ");
+            var person = prompt("Username : ");
+            var password = prompt("Password : ");
+
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            }
+            else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange=function() {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                    var temp = xmlhttp.responseText;
+                    if (temp == "OK") {
+                        // Kode kalau berhasil Login
+                        if (typeof(Storage) !== "undefined") {
+                            localStorage.username = person;   
+                        }
+                        location.reload(true);
+                    } else {
+                        alert("Login failed");
+                    }
+                }
+            }
+            xmlhttp.open("GET","login.php?value="+person+"&value2="+password,true);
+            xmlhttp.send();
         }
         function logout() {
+            if (typeof(Storage) !== "undefined") {
+                localStorage.removeItem("username");
+            }
+            location.reload(true);
         }
     </script>
 

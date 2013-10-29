@@ -1,20 +1,22 @@
+<?php include("header.php"); ?>
+
 <html>
 	<body>
 		<?php 
 			include 'connect-mysql.php';
 
-			$sql = "INSERT INTO creditcard (number,name,date)
+			$sql = "INSERT INTO creditcard (number,name,date,username)
 				VALUES
 					('$_POST[number]' , 
 					 '$_POST[name]' , 
-					 '$_POST[date]')
+					 '$_POST[date]',
+					 '$_POST[username]')
 			";
 
 			$result = mysql_query($sql);
 			if (!$result) {
 				die("Error : " . mysql_error());
 			}
-			echo "1 record added";
 		?>
 
 		<a href="index.php">Kembali</a>

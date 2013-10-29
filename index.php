@@ -1,11 +1,9 @@
+<?php
+    include("header.php");
+?>
+
 <!doctype html>
 <html>
-
-    <?php
-        // Header
-        include("header.php");
-    ?>
-    
     <body>
         <div id="content">
             <!-- Main content area -->
@@ -25,27 +23,25 @@
                                 die("Error : " . mysql_error());
                             }
                             echo '<ul>';
-                            while($row = mysql_fetch_row($result)) {
-                                foreach($row as $key=>$value) {
-                                    echo '<li> <h3> <a href="#">', $value, '</a> </h3> </li>';
-                                    $sql = "SELECT name FROM product WHERE category = '" .$value. "'";
+                            while($row = mysql_fetch_array($result)) {
+                                //foreach($row as $key=>$value) {
+                                    echo '<li> <h3> <a href=products.php?category="',$row['category'],'">', $row['category'], '</a> </h3> </li>';
+                                    $sql = "SELECT id, name, picture FROM product WHERE category = '" .$row['category']. "' ORDER BY sold DESC";
                                     $result2 = mysql_query($sql,$connect);
                                     if (!$result2) {
                                         die("Error : " . mysql_error());
                                     }
                                     echo '<ul>';
                                     $i = 1;
-                                    while($row2 = mysql_fetch_row($result2)) {
-                                        foreach($row2 as $key2=>$value2) {
+                                    while($row2 = mysql_fetch_array($result2)) {
                                             if($i<=3) {
-                                                echo '<li> <a href="#">', $value2, '</a> </li>';  
-                                                  
+                                                echo '<li> <a href=detail_product.php?product_id=',$row2['id'],'>',$row2['name'],'</a> </li>';
+                                                echo '<img src="'.$row2['picture'].'"> </li>';   
                                             }
                                             $i++;
-                                        }
                                     }
                                     echo '</ul>';
-                                }
+                                //}
                             }
                         echo '</ul>';
                         ?>
@@ -55,6 +51,7 @@
         
             <!-- Sidebar -->
             <aside>
+
             </aside>
         </div>
 

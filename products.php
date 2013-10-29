@@ -1,23 +1,22 @@
 <?php
-	include("connect-mysql.php");
+	include("functions.php");
 	include("header.php");
 	
-	if(isset($_REQUEST['command']) || isset($_REQUEST['productId'])) {
-		if($_REQUEST['command']=='add' && $_REQUEST['productid']>0){
-			$pid=$_REQUEST['productid'];
-			addtocart($pid,1);
-			header("location:shoppingcart.php");
-			exit();
-		}
+	if($_REQUEST['command']=='add' && $_REQUEST['productid']>0){
+		$pid=$_REQUEST['productid'];
+		addtocart($pid);
+		header("location:shoppingcart.php");
+		exit();
 	}
-	
+
+	include("connect-mysql.php");
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Products</title>
-<script language="javascript">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script language="javascript">
 	function addtocart(pid){
 		document.form1.productid.value=pid;
 		document.form1.command.value='add';
@@ -26,36 +25,31 @@
 </script>
 </head>
 
-
 <body>
-<form name="form1">
-	<input type="hidden" name="productid" />
-    <input type="hidden" name="command" />
-</form>
-<div align="center">
-	<h1 align="center">Products</h1>
-	<table border="0" cellpadding="2px" width="600px">
-		<?php
-			$result = mysql_query("SELECT * FROM product WHERE category = " .$_GET['category']) 
-					or die("SELECT * FROM product "."<br/><br/>".mysql_error());
-			while($row = mysql_fetch_array($result)) {
-		?>
-    	<tr>
-        	<td>
-				<img src="<?php echo $row['picture']?>" />
-			</td>
-            <td>   	
-				<b> <?php echo $row['name']?> </b> <br />
-				Price:<big style="color:green"> $<?php echo $row['price']?></big> <br /> <br />
-				<form>
-					<input type
-					<input type="button" value="Add to Cart" onclick="addtocart(<?php echo $row['id'];?>)" />
-				</form>
-			</td>
-		</tr>
-        <tr><td colspan="2"><hr size="1" /></td>
-        <?php } ?>
-    </table>
-</div>
+	<form name="form1">
+		<input type="hidden" name="productid" />
+    	<input type="hidden" name="command" />
+	</form>
+	<div id = "content"> <div id = "mainContent">
+		<section id = "products">
+			<h2>Products</h2>
+			<?php
+				$result = mysql_query("SELECT * FROM product WHERE category = " .$_GET['category']);
+
+				while($row = mysql_fetch_array($result)) { ?>
+					<img src="<?php echo $row['picture']?>" />
+					<h3> 
+						<?php echo '<a href=detail_product.php?product_id='.$row['id'].'>'; ?>
+						<?php echo $row['name']; ?>
+						<?php echo '</a>'; ?>
+					 </h3>
+					Price: $<?php echo $row['price']?>
+					<form>
+						<input type="button" value="Add to Cart" onclick="addtocart(<?php echo $row['id'];?>)" />
+					</form>
+        		<?php } ?>
+		</section>
+	</div> </div>
 </body>
+
 </html>

@@ -1,28 +1,27 @@
 <?php
-	include("includes/db.php");
-	include("includes/functions.php");
+	include("header.php");
+	include("connect-mysql.php");
+	include("functions.php");
 	
 	global $msg;
 	
-	if(isset($_REQUEST['command'])) {
-		if($_REQUEST['command']=='delete' && $_REQUEST['pid']>0){
-			remove_product($_REQUEST['pid']);
-		}
-		else if($_REQUEST['command']=='clear'){
-			unset($_SESSION['cart']);
-		}
-		else if($_REQUEST['command']=='update'){
-			$max=count($_SESSION['cart']);
-			for($i=0;$i<$max;$i++){
-				$pid=$_SESSION['cart'][$i]['productid'];
-				$q=intval($_REQUEST['product'.$pid]);
-				if($q>0 && $q<=999){
-					$msg = '';
-					$_SESSION['cart'][$i]['qty']=$q;
-				}
-				else{
-					$msg='Some products not updated!, quantity must be a number between 1 and 999';
-				}
+	if($_REQUEST['command']=='delete' && $_REQUEST['pid']>0){
+		remove_product($_REQUEST['pid']);
+	}
+	else if($_REQUEST['command']=='clear'){
+		unset($_SESSION['cart']);
+	}
+	else if($_REQUEST['command']=='update'){
+		$max=count($_SESSION['cart']);
+		for($i=0;$i<$max;$i++){
+			$pid=$_SESSION['cart'][$i]['productid'];
+			$q=intval($_REQUEST['product'.$pid]);
+			if($q>0 && $q<=999){
+				$msg = '';
+				$_SESSION['cart'][$i]['qty']=$q;
+			}
+			else{
+				$msg='Some products not updated!, quantity must be a number between 1 and 999';
 			}
 		}
 	}
@@ -57,13 +56,18 @@
 </head>
 
 <body>
+	<script>
+		if (!localStorage.username) {
+			window.location = "Register.php";
+		}
+	</script>
 <form name="form1" method="post">
 <input type="hidden" name="pid" />
 <input type="hidden" name="command" />
 	<div style="margin:0px auto; width:600px;" >
     <div style="padding-bottom:10px">
     	<h1 align="center">Your Shopping Cart</h1>
-    <input type="button" value="Continue Shopping" onclick="window.location='products.php';" />
+    <input type="button" value="Continue Shopping" onclick="window.location='index.php';" />
     </div>
     	<div style="color:#F00"><?php echo $msg ?></div>
     	<table border="0" cellpadding="5px" cellspacing="1px" style="font-family:Verdana, Geneva, sans-serif; font-size:11px; background-color:#E1E1E1" width="100%">

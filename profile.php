@@ -1,11 +1,8 @@
-<html> 
-	<head>
-	</head>
-	<body>
-		<h1>Profile User</h1>
-		<?php 
-			//$username = $_POST['username'];
-			$username = "akbarsyam";
+<?php 
+	include("header.php");
+	if (isset($_POST['user'])) {
+		$username = $_POST['user'];
+			//$username = "akbarsyam";
 			include 'connect-mysql.php';
 
 			$sql = "SELECT * FROM user WHERE username = '".$username."'";
@@ -29,7 +26,43 @@
 				<pre>Kode Pos            : <input type="text" name="kodepos" value="'.$row['kodepos'].'" onkeyup="valKodepos()"> <span id="kodepos"></span> <br> </pre>
 				<input type="submit" id="register" value="Save" disabled>
 			</form>';
-		?>
+		exit();
+	}
+
+?>
+
+<html> 
+	<?php
+        // Header
+        include("header.php");
+    ?>
+	<body>
+		<h1>Profile User</h1>
+		<script>
+			if (!localStorage.username) {
+				window.location = "Register.php";
+			}
+
+			var username = localStorage.username;
+			var xmlhttp;
+			if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+  				xmlhttp=new XMLHttpRequest();
+  			}
+			else {// code for IE6, IE5
+  			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  			}
+			xmlhttp.onreadystatechange=function() {
+				if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+					document.getElementById("prof").innerHTML = xmlhttp.responseText;
+				}
+			}
+			xmlhttp.open("POST","profile.php",true);
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send("user="+username);
+			
+		</script>
+
+		<div id="prof"></div>
 
 		<script>
 			var validPassword = false;

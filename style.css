@@ -156,3 +156,13 @@ aside {
     background: url("nav_background.jpg");  
     color: #777;
 }
+
+#products {
+    left: 0;
+    text-align: center;
+    width: 100%;  
+}
+
+#welcome {
+    text-decoration: none;
+}

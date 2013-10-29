@@ -1,11 +1,11 @@
 <?php
 	function get_product_name($pid){
-		$result=mysql_query("select name from products where serial=$pid") or die("select name from products where serial=$pid"."<br/><br/>".mysql_error());
+		$result=mysql_query("select name from product where id=$pid") or die("select name from product where id=$pid"."<br/><br/>".mysql_error());
 		$row=mysql_fetch_array($result);
 		return $row['name'];
 	}
 	function get_price($pid){
-		$result=mysql_query("select price from products where serial=$pid") or die("select name from products where serial=$pid"."<br/><br/>".mysql_error());
+		$result=mysql_query("select price from product where id=$pid") or die("select price from product where id=$pid"."<br/><br/>".mysql_error());
 		$row=mysql_fetch_array($result);
 		return $row['price'];
 	}
@@ -31,19 +31,20 @@
 		}
 		return $sum;
 	}
-	function addtocart($pid,$q){
-		if($pid<1 or $q<1) return;
-		
+	function addtocart($pid){
+		if($pid < 0) return;
+
 		if(is_array($_SESSION['cart'])){
-			if(product_exists($pid)) return;
+			if(product_exists($pid)) {
+				return;
+			}
 			$max=count($_SESSION['cart']);
 			$_SESSION['cart'][$max]['productid']=$pid;
-			$_SESSION['cart'][$max]['qty']=$q;
-		}
-		else{
+			$_SESSION['cart'][$max]['qty']=1;
+		} else{
 			$_SESSION['cart']=array();
 			$_SESSION['cart'][0]['productid']=$pid;
-			$_SESSION['cart'][0]['qty']=$q;
+			$_SESSION['cart'][0]['qty']=1;
 		}
 	}
 	function product_exists($pid){

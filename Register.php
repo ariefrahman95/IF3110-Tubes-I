@@ -1,11 +1,11 @@
-<HTML>
-	<?php
-        // Header
-        include("header.php");
-    ?>
+<?php
+    // Header
+    include("header.php");
+?>
 
+<HTML>
 	<body>
-		<h1>Registrasi Pengguna</h1>
+		<h1>Form Registrasi Ruko Serba Ada</h1>
 		<form method="post" action="Mysql-Register.php" name="regform">
 			<pre>Username            : <input type="text" name="username" onkeyup="valPassword();valUsername();valid()"> <span id="user"> </span><br> </pre>
 			<pre>Password            : <input type="password" name="password" onkeyup="valPassword();valUsername();valEmail();valid()"> <span id="pass"></span> <br> </pre>
@@ -23,6 +23,7 @@
 		<script>
 			var validUsername = false;
 			var validPassword = false;
+			var validConfirm = false;
 			var validEmail = false;
 			var validNama = false;
 			var validHP = false;
@@ -98,7 +99,7 @@
 			}
 
 			function valid() {
-				if (validUsername && validPassword && validEmail && validNama && validHP && validAlamat && validProvinsi && validKota && validKodepos) {
+				if (validUsername && validConfirm && validPassword && validEmail && validNama && validHP && validAlamat && validProvinsi && validKota && validKodepos) {
 					document.getElementById("register").disabled = false;
 				}
 				else {
@@ -136,11 +137,11 @@
 
 				if ((confirm != password) && (confirm.length > 0)) {
 					document.getElementById("conf").innerHTML = "Password tidak sama";
-					validPassword = false;
+					validConfirm = false;
 				}
 				else {
 					document.getElementById("conf").innerHTML = "";
-					validPassword = true;
+					validConfirm = true;
 				}
 			}
 
