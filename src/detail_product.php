@@ -2,11 +2,13 @@
 	session_start();
 	include('functions.php');
 
-	if($_REQUEST['command']=='add' && $_REQUEST['productid']>0){
-		$pid=$_REQUEST['productid'];
-		addtocart($pid);
-		header("location:shoppingcart.php");
-		exit();
+	if(isset($_REQUEST['command']) && isset($_REQUEST['productid'])) {
+		if($_REQUEST['command']=='add' && $_REQUEST['productid']>0){
+			$pid=$_REQUEST['productid'];
+			addtocart($pid);
+			header("location:shoppingcart.php");
+			exit();
+		}
 	}
 
 	include('header.php');

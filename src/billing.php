@@ -21,14 +21,19 @@
 	<?php 
 		$max=count($_SESSION['cart']);
 		for($i=0;$i<$max;$i++){
-			$pid=$_SESSION['cart'][$i]['productid'];
-			$q=$_SESSION['cart'][$i]['qty'];
+			$pid= $_SESSION['cart'][$i]['productid'];
+			$q= $_SESSION['cart'][$i]['qty'];
 			
 			$result = mysql_query("UPDATE product SET sold = sold + ".$q.", quantity = quantity - ".$q." WHERE id = ".$pid);
 			if(!$result) {
 				die("Your order cannot be placed! Please try again later.");
 			}
 		}
+		
+		for($i=0;$i<$max;$i++){
+			unset($_SESSION['cart'][$i]);
+		}
+		unset($_SESSION['cart']);
 	?>
 	Your order has been placed! Thank you for buying from us! <br />
 	<a href="index.php">Kembali</a>

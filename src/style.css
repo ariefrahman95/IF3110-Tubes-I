@@ -1,11 +1,5 @@
 /* style.css */
 
-/* Makeshift CSS Reset */
-{
-    margin: 0;
-    padding: 0;
-}
-
 body {
     margin: 0 auto;
     width: 940px;
@@ -112,7 +106,7 @@ article ul li a {
       
 #intro h2 {  
     padding: 0 0 22px 0;  
-    font-weight: normal  
+    font-weight: normal;
     color: #fff;  
 }  
       

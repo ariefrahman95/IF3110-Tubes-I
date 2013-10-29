@@ -1,15 +1,58 @@
 Cek Spek Tubes WBD
 
-HEADER
+FUNGSIONALITAS
 1. Logo Situs
-	23/10 Azal | Bikin versi ngasal, format .png, berupa link ke home (hello.php) 
+	Udah 
 2. Kategori
-	23/10 Azal | Bikin versi ngasal, tulisan hyperlink menuju page yang belum ada, belum pake AJAX
+	Udah
 3. Login + Daftar
-	23/10 Azal | Bikin versi ngasal, tulisan hyperlink menuju page yang belum ada. Belum bisa ganti jadi "Selamat datang, <Nama>!" atau jadi Logout.
-4. Registrasi (AJAX)
-	//LAGI AMA ARIEF
+	UDAH CUY: Popup, redirect, ubah login/logout
+4. Registrasi + Profile
+	Udah
 5. Search
-	23/10 Azal | Masih versi ngasal
+	Input teks, button, dropdown udah ada, belum nguery
 6. Link Shopping Bag
-	23/10 Azal | Masih versi ngasal
+	Udah
+7. Gambar Top Three Buyment
+	Tinggal dirapiin kalo mau
+8. Halaman Kategori
+	Udah
+9. Search Result
+	Udah
+10. Detail Barang
+	Tinggal dirapiin kalo mau
+11. Profile
+	Udah
+12. Shopping bag
+	Udah
+
+WAJIB
+1. Oke
+2. Oke, iya ga sih?
+3. Oke
+
+BONUS
+1. Ada
+2. 
+3. 
+4.
+5. Udah
+6. 
+7. Udah
+8.
+
+3.
+4.
+5. Oke
+6. Oke
+7. Oke
+
+BASIS DATA
+1. Belum
+2. Belum
+
+PERUBAHAN SPEK TUGAS
+1. Udah
+2. Udah
+3. Udah
+4. Udah

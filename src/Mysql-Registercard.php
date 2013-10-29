@@ -6,16 +6,14 @@
 			include 'connect-mysql.php';
 
 			$sql = "INSERT INTO creditcard (number,name,date,username)
-				VALUES
-					('$_POST[number]' , 
-					 '$_POST[name]' , 
-					 '$_POST[date]',
-					 '$_POST[username]')
-			";
+					VALUES('".$_POST["number"]."' , 
+					 '".$_POST["name"]."' , 
+					 '".$_POST["date"]."',
+					 '".$_POST["username"]."');";
 
 			$result = mysql_query($sql);
 			if (!$result) {
-				die("Error : " . mysql_error());
+				die("$sql : " . mysql_error());
 			}
 		?>
 

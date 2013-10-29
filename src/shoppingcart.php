@@ -5,27 +5,28 @@
 	
 	global $msg;
 	
-	if($_REQUEST['command']=='delete' && $_REQUEST['pid']>0){
-		remove_product($_REQUEST['pid']);
-	}
-	else if($_REQUEST['command']=='clear'){
-		unset($_SESSION['cart']);
-	}
-	else if($_REQUEST['command']=='update'){
-		$max=count($_SESSION['cart']);
-		for($i=0;$i<$max;$i++){
-			$pid=$_SESSION['cart'][$i]['productid'];
-			$q=intval($_REQUEST['product'.$pid]);
-			if($q>0 && $q<=999){
-				$msg = '';
-				$_SESSION['cart'][$i]['qty']=$q;
-			}
-			else{
-				$msg='Some products not updated!, quantity must be a number between 1 and 999';
+	if(isset($_REQUEST['command']) && isset($_REQUEST['pid'])) {
+		if($_REQUEST['command']=='delete' && $_REQUEST['pid']>0){
+			remove_product($_REQUEST['pid']);
+		}
+		else if($_REQUEST['command']=='clear'){
+			unset($_SESSION['cart']);
+		}
+		else if($_REQUEST['command']=='update'){
+			$max=count($_SESSION['cart']);
+			for($i=0;$i<$max;$i++){
+				$pid=$_SESSION['cart'][$i]['productid'];
+				$q=intval($_REQUEST['product'.$pid]);
+				if($q>0 && $q<=999){
+					$msg = '';
+					$_SESSION['cart'][$i]['qty']=$q;
+				}
+				else{
+					$msg='Some products not updated!, quantity must be a number between 1 and 999';
+				}
 			}
 		}
 	}
-
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -72,7 +73,7 @@
     	<div style="color:#F00"><?php echo $msg ?></div>
     	<table border="0" cellpadding="5px" cellspacing="1px" style="font-family:Verdana, Geneva, sans-serif; font-size:11px; background-color:#E1E1E1" width="100%">
     	<?php
-			if(is_array($_SESSION['cart'])){
+			if(isset($_SESSION['cart']) &&is_array($_SESSION['cart'])){
             	echo '<tr bgcolor="#FFFFFF" style="font-weight:bold"><td>Serial</td><td>Name</td><td>Price</td><td>Qty</td><td>Amount</td><td>Options</td></tr>';
 				$max=count($_SESSION['cart']);
 				for($i=0;$i<$max;$i++){
