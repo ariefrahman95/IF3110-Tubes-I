@@ -24,6 +24,12 @@
 			$pid= $_SESSION['cart'][$i]['productid'];
 			$q= $_SESSION['cart'][$i]['qty'];
 			
+			$data = mysql_query("SELECT * FROM product WHERE id = ".$pid);
+			$row = mysql_fetch_array($data);
+			if($row['quantity'] < $q) {
+				die("Not enough ".$row['name']." in our stock. Please try again later.");
+			}
+			
 			$result = mysql_query("UPDATE product SET sold = sold + ".$q.", quantity = quantity - ".$q." WHERE id = ".$pid);
 			if(!$result) {
 				die("Your order cannot be placed! Please try again later.");
